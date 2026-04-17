@@ -53,16 +53,16 @@ const reviews = [
 ];
 
 const spinOptions = [
-  { emoji:'🍰', name:'Red Velvet Cake', desc:'Because life needs more velvet.' },
-  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.' },
-  { emoji:'🍦', name:'Salted Caramel Gelato', desc:'Sweet meets salty in the best way.' },
-  { emoji:'☕', name:'Cappuccino', desc:'The perfect afternoon pick-me-up.' },
-  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.' },
-  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.' },
-  { emoji:'🥧', name:'Cinnamon Roll', desc:'Warm, glazed, and dangerously good.' },
-  { emoji:'🥭', name:'Mango Sorbet', desc:'Fresh, tropical, and guilt-free joy.' },
-  { emoji:'🍞', name:'Sourdough Slice', desc:'The bread that started it all.' },
-  { emoji:'🧁', name:'Vanilla Cupcake', desc:'Classic, simple, and perfect.' },
+  { emoji:'🍰', name:'Red Velvet Cake', desc:'Because life needs more velvet.', img:'cakes.png' },
+  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.', img:'baked_pastries.png' },
+  { emoji:'🍦', name:'Salted Caramel Gelato', desc:'Sweet meets salty in the best way.', img:'different_variety_icecream.png' },
+  { emoji:'☕', name:'Cappuccino', desc:'The perfect afternoon pick-me-up.', img:'artisanal_cappuccino_paired_with_one_of_our_house_made_pastries_.png' },
+  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.', img:'cakes.png' },
+  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.', img:'chocolate_fudge.png' },
+  { emoji:'🥧', name:'Cinnamon Roll', desc:'Warm, glazed, and dangerously good.', img:'baked_pastries.png' },
+  { emoji:'🥭', name:'Mango Sorbet', desc:'Fresh, tropical, and guilt-free joy.', img:'different_variety_icecream.png' },
+  { emoji:'🍞', name:'Sourdough Slice', desc:'The bread that started it all.', img:'everything.png' },
+  { emoji:'🍩', name:'Fresh Glazed Donut', desc:'Classic, glazed, and perfect.', img:'Fresh_Donuts.png' },
 ];
 
 // ============================================================
@@ -714,7 +714,7 @@ document.getElementById('spinBtn').addEventListener('click', () => {
       const pick = spinOptions[Math.floor(Math.random() * spinOptions.length)];
       result.style.display = 'block';
       result.innerHTML = `
-        <div class="spin-emoji">${pick.emoji}</div>
+        <img src="${pick.img}" alt="${pick.name}" class="spin-result-img" />
         <h3>Today, you should try...</h3>
         <h2 style="font-family:var(--font-heading);color:var(--brown);font-size:1.8rem;margin:12px 0">${pick.name}</h2>
         <p style="color:var(--text-light)">${pick.desc}</p>
