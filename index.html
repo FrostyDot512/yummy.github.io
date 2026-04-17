@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yummy – A Tasteful Moment | Palm Village Mall, Ggaba, Kampala</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="Yummy_Logo.jpg">
+</head>
+<body class="light-mode">
+
+  <!-- ======== LOADING SCREEN ======== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">
+        <img src="Yummy_Logo.jpg" alt="Yummy Logo" class="loader-logo-img" />
+      </div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+      <div class="loader-emojis">🍰 🥐 🍦 🎂 ☕</div>
+    </div>
+  </div>
+
+  <!-- ======== STICKY NAVBAR ======== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">yummy</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#cake-builder">Order Cake</a></li>
+        <li><a href="#gelato">Gelato</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+        <button class="cart-btn" id="cartBtn">🛒 <span id="cartCount">0</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== CORNER LOGO ======== -->
+  <div class="corner-logo">
+    <img src="Yummy_Logo.jpg" alt="Yummy Logo" />
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <section id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-center-logo reveal">
+        <img src="Yummy_Logo.jpg" alt="Yummy Logo" />
+      </div>
+      <h1 class="hero-headline reveal">A Tasteful Moment<br/><em>in Every Bite</em></h1>
+      <p class="hero-sub reveal">Fresh pastries · Artisan breads · Custom cakes · Gelato · Coffee<br/>
+        <strong>📍 Palm Village Mall, Ggaba &nbsp;|&nbsp; Lugogo Mall — Kampala</strong></p>
+      <div class="hero-btns reveal">
+        <a href="#menu" class="btn-primary glow">🍰 Explore Menu</a>
+        <a href="#cake-builder" class="btn-secondary">🎂 Order a Cake</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><div class="stat-num" data-target="385">0</div><div class="stat-label">Reviews</div></div>
+        <div class="stat"><div class="stat-num" data-target="44">0</div><div class="stat-label">★ Rating</div></div>
+        <div class="stat"><div class="stat-num" data-target="1000">0</div><div class="stat-label">Customers</div></div>
+        <div class="stat"><div class="stat-num" data-target="20">0</div><div class="stat-label">Gelato Flavours</div></div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow-anim"></div>
+    </div>
+  </section>
+
+  <!-- ======== GALLERY ======== -->
+  <section id="gallery" class="section-pad gallery-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">📸 Gallery</span>
+        <h2>A Taste of <em>Yummy</em></h2>
+        <p>Moments, flavours, and memories crafted with love.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item--tall reveal">
+          <div class="gallery-placeholder gp1">
+            <span>🥐</span>
+            <p>Fresh Croissants</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder gp2">
+            <span>🎂</span>
+            <p>Custom Cakes</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder gp3">
+            <span>🍦</span>
+            <p>Gelato Bar</p>
+          </div>
+        </div>
+        <div class="gallery-item gallery-item--wide reveal">
+          <div class="gallery-placeholder gp4">
+            <span>☕</span>
+            <p>Coffee &amp; Moments</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder gp5">
+            <span>🍞</span>
+            <p>Artisan Breads</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder gp6">
+            <span>🧁</span>
+            <p>Cupcakes &amp; Treats</p>
+          </div>
+        </div>
+      </div>
+      <p class="gallery-note reveal">📸 Add your own images by replacing the placeholders above — use relative paths like <code>my-photo.jpg</code></p>
+    </div>
+  </section>
+
+
+  <!-- ======== MENU ======== -->
+  <section id="menu" class="section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">🍽️ Our Menu</span>
+        <h2>Crafted With <em>Love &amp; Butter</em></h2>
+      </div>
+      <div class="filter-tabs reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cakes">🎂 Cakes</button>
+        <button class="filter-btn" data-filter="bread">🍞 Bread</button>
+        <button class="filter-btn" data-filter="pastries">🥐 Pastries</button>
+        <button class="filter-btn" data-filter="gelato">🍦 Gelato</button>
+        <button class="filter-btn" data-filter="drinks">☕ Drinks</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======== CAKE BUILDER ======== -->
+  <section id="cake-builder" class="section-pad builder-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">🎂 Custom Order</span>
+        <h2>Build Your <em>Dream Cake</em></h2>
+        <p>Design your perfect cake — we'll bake it fresh for you.</p>
+      </div>
+      <div class="builder-wrap">
+        <div class="builder-form reveal">
+
+          <div class="builder-step">
+            <label>🍰 Cake Flavour</label>
+            <div class="option-pills" data-group="flavour">
+              <button class="pill active" data-val="Red Velvet" data-price="5000">Red Velvet</button>
+              <button class="pill" data-val="Chocolate Fudge" data-price="5000">Chocolate Fudge</button>
+              <button class="pill" data-val="Vanilla" data-price="4000">Vanilla</button>
+              <button class="pill" data-val="Lemon Zest" data-price="4500">Lemon Zest</button>
+              <button class="pill" data-val="Tiramisu" data-price="6000">Tiramisu</button>
+              <button class="pill" data-val="Carrot" data-price="4500">Carrot</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>📏 Size</label>
+            <div class="option-pills" data-group="size">
+              <button class="pill active" data-val='6"' data-price="30000">6" (serves 6)</button>
+              <button class="pill" data-val='8"' data-price="50000">8" (serves 12)</button>
+              <button class="pill" data-val='10"' data-price="75000">10" (serves 20)</button>
+              <button class="pill" data-val='12"' data-price="100000">12" (serves 30)</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>🎚️ Layers</label>
+            <div class="option-pills" data-group="layers">
+              <button class="pill active" data-val="1 Layer" data-price="0">1 Layer</button>
+              <button class="pill" data-val="2 Layers" data-price="10000">2 Layers +10k</button>
+              <button class="pill" data-val="3 Layers" data-price="20000">3 Layers +20k</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>🎨 Frosting</label>
+            <div class="option-pills" data-group="frosting">
+              <button class="pill active" data-val="Buttercream" data-price="0">Buttercream</button>
+              <button class="pill" data-val="Cream Cheese" data-price="5000">Cream Cheese +5k</button>
+              <button class="pill" data-val="Chocolate Ganache" data-price="8000">Ganache +8k</button>
+              <button class="pill" data-val="Whipped Cream" data-price="3000">Whipped Cream +3k</button>
+              <button class="pill" data-val="Fondant" data-price="15000">Fondant +15k</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>🍓 Toppings <small>(multi-select)</small></label>
+            <div class="option-pills multi" data-group="toppings">
+              <button class="pill toggle" data-val="Fresh Strawberries" data-price="5000">🍓 Strawberries +5k</button>
+              <button class="pill toggle" data-val="Chocolate Shavings" data-price="3000">🍫 Choc Shavings +3k</button>
+              <button class="pill toggle" data-val="Macarons" data-price="8000">🎨 Macarons +8k</button>
+              <button class="pill toggle" data-val="Edible Flowers" data-price="10000">🌸 Edible Flowers +10k</button>
+              <button class="pill toggle" data-val="Gold Leaf" data-price="15000">✨ Gold Leaf +15k</button>
+              <button class="pill toggle" data-val="Sprinkles" data-price="2000">🌈 Sprinkles +2k</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>🎁 Add-ons <small>(multi-select)</small></label>
+            <div class="option-pills multi" data-group="addons">
+              <button class="pill toggle" data-val="Candles" data-price="3000">🕯️ Candles +3k</button>
+              <button class="pill toggle" data-val="Birthday Topper" data-price="5000">🎂 Bday Topper +5k</button>
+              <button class="pill toggle" data-val="Premium Flowers" data-price="20000">💐 Flowers +20k</button>
+              <button class="pill toggle" data-val="Gift Box" data-price="8000">🎁 Gift Box +8k</button>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <label>✍️ Custom Message (optional)</label>
+            <input type="text" id="cakeMessage" placeholder="e.g. Happy Birthday Sarah! 🎉" maxlength="60" />
+          </div>
+
+          <div class="builder-step">
+            <label>📅 Delivery / Pickup Date</label>
+            <input type="date" id="cakeDate" />
+          </div>
+
+        </div>
+        <div class="builder-summary reveal">
+          <div class="summary-card">
+            <div class="cake-preview">
+              <div class="cake-visual" id="cakeVisual">🎂</div>
+              <div class="cake-msg-preview" id="cakeMsgPreview">Your message here</div>
+            </div>
+            <h3>Your Custom Cake</h3>
+            <div class="s-row"><span>Flavour</span><strong id="s-flavour">Red Velvet</strong></div>
+            <div class="s-row"><span>Size</span><strong id="s-size">6"</strong></div>
+            <div class="s-row"><span>Layers</span><strong id="s-layers">1 Layer</strong></div>
+            <div class="s-row"><span>Frosting</span><strong id="s-frosting">Buttercream</strong></div>
+            <div class="s-row"><span>Toppings</span><strong id="s-toppings">None</strong></div>
+            <div class="s-row"><span>Add-ons</span><strong id="s-addons">None</strong></div>
+            <div class="s-row"><span>Date</span><strong id="s-date">TBD</strong></div>
+            <div class="s-row total"><span>TOTAL</span><strong id="s-total">UGX 35,000</strong></div>
+            <button class="btn-primary glow" id="orderCakeBtn">WhatsApp Order 🚀</button>
+            <button class="btn-secondary" id="saveCakeBtn">💾 Save Order</button>
+            <div id="savedMsg" style="display:none;color:var(--brown);margin-top:8px;font-size:.9rem;text-align:center;">✅ Order saved!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== GELATO ======== -->
+  <section id="gelato" class="section-pad gelato-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">🍨 Gelato Bar</span>
+        <h2>The <em>Gelato Experience</em></h2>
+        <p>Drag or swipe to explore all flavours</p>
+      </div>
+      <div class="gelato-track-wrap">
+        <div class="gelato-track" id="gelatoTrack"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section id="about" class="section-pad about-section">
+    <div class="container about-grid">
+      <div class="about-text reveal">
+        <span class="section-tag">🧁 Our Story</span>
+        <h2>Kampala's Favourite <em>Bakery Destination</em></h2>
+        <p>Yummy – A Tasteful Moment is a beloved bakery and dessert café at <strong>Palm Village Mall, Ggaba, Kampala</strong>. We bake artisan breads daily, craft custom cakes for every celebration, and serve creamy gelato in a warm, welcoming atmosphere.</p>
+        <p>From our signature sourdough loaves slow-fermented overnight, to our indulgent Red Velvet and Tiramisu cakes crafted by our pastry chefs — every item is made with love and the finest ingredients.</p>
+        <p>Whether you're grabbing a morning coffee and croissant, celebrating a birthday with a custom cake, or treating yourself to a scoop of gelato — <strong>Yummy</strong> is your tasteful moment.</p>
+        <div class="about-counters">
+          <div class="counter reveal"><div class="count-num" data-target="385">0</div><div>5-Star Reviews</div></div>
+          <div class="counter reveal"><div class="count-num" data-target="50">0</div><div>Daily Pastries</div></div>
+          <div class="counter reveal"><div class="count-num" data-target="20">0</div><div>Gelato Flavours</div></div>
+          <div class="counter reveal"><div class="count-num" data-target="1000">0</div><div>Happy Customers</div></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-img-card">
+          <div class="about-logo-img">
+            <img src="Yummy_Logo.jpg" alt="Yummy Logo" class="about-yummy-logo" />
+          </div>
+          <div class="about-croissant-img">
+            <!-- Replace croissant_holder.jpg with your actual image filename -->
+            <div class="croissant-placeholder">
+              <span>🥐</span>
+              <p>Add your croissant image here<br/><small>(replace with: <code>croissant_holder.jpg</code>)</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SIGNATURE CAKES ======== -->
+  <section id="signature" class="section-pad">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">👨‍🍳 Chef's Pick</span>
+        <h2>Signature <em>Masterpieces</em></h2>
+      </div>
+      <div class="signature-grid">
+        <div class="sig-card reveal">
+          <div class="sig-emoji">🎂</div>
+          <h3>The Royal Tiramisu</h3>
+          <p>Mascarpone, espresso-soaked ladyfingers, cocoa dusting. A showstopper for any occasion.</p>
+          <span class="sig-price">From UGX 95,000</span>
+        </div>
+        <div class="sig-card featured reveal">
+          <div class="sig-best">⭐ Chef's Favourite</div>
+          <div class="sig-emoji">🍰</div>
+          <h3>Black Forest Dream</h3>
+          <p>Kirsch-soaked chocolate sponge, whipped cream, dark cherries &amp; shaved chocolate.</p>
+          <span class="sig-price">From UGX 110,000</span>
+        </div>
+        <div class="sig-card reveal">
+          <div class="sig-emoji">🌸</div>
+          <h3>Floral Fondant Cake</h3>
+          <p>Custom fondant with edible flowers, gold leaf accents, and a soft vanilla bean interior.</p>
+          <span class="sig-price">From UGX 140,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== REVIEWS ======== -->
+  <section id="reviews" class="section-pad reviews-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">⭐ Reviews</span>
+        <h2>What Kampala <em>Is Saying</em></h2>
+      </div>
+      <div class="review-carousel-wrap">
+        <button class="carousel-btn prev" id="reviewPrev">‹</button>
+        <div class="review-track-outer">
+          <div class="review-track" id="reviewTrack"></div>
+        </div>
+        <button class="carousel-btn next" id="reviewNext">›</button>
+      </div>
+      <div class="review-dots" id="reviewDots"></div>
+    </div>
+  </section>
+
+  <!-- ======== DESSERT PICKER ======== -->
+  <section id="picker" class="section-pad picker-section">
+    <div class="container picker-inner reveal">
+      <span class="section-tag">🎰 Can't Decide?</span>
+      <h2>Let Us <em>Choose For You!</em></h2>
+      <p>Hit the button — we'll pick your next Yummy treat</p>
+      <button class="spin-btn glow" id="spinBtn">🎲 Spin the Wheel!</button>
+      <div class="spin-result" id="spinResult"></div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section id="contact" class="section-pad contact-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">📍 Find Us</span>
+        <h2>Visit <em>Yummy Today</em></h2>
+        <p>Now at two locations across Kampala</p>
+      </div>
+      <div class="locations-grid">
+
+        <!-- Branch 1: Palm Village -->
+        <div class="location-card reveal">
+          <div class="location-header">
+            <span class="location-badge">📍 Branch 1 · NEW</span>
+            <h3>Palm Village Mall</h3>
+            <p>Ggaba Road, Kampala</p>
+          </div>
+          <div class="contact-info">
+            <div class="info-card">
+              <div class="info-icon">🕐</div>
+              <div>
+                <strong>Opening Hours</strong>
+                <button class="hours-btn" id="hoursBtn">View Hours ▼</button>
+                <div class="hours-drop" id="hoursDrop">
+                  <div class="h-row"><span>Mon – Fri</span><span>7:00 AM – 11:00 PM</span></div>
+                  <div class="h-row"><span>Saturday</span><span>7:00 AM – 11:00 PM</span></div>
+                  <div class="h-row"><span>Sunday</span><span>8:00 AM – 10:00 PM</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon">🚗</div>
+              <div><strong>We Offer</strong><p>Dine-In &nbsp;•&nbsp; Takeaway &nbsp;•&nbsp; Delivery</p></div>
+            </div>
+          </div>
+          <div class="map-container">
+            <div class="map-placeholder">
+              <div class="map-pin-anim">📍</div>
+              <div class="map-label">
+                <strong>Yummy – Palm Village</strong><br/>
+                Palm Village Mall, Ggaba<br/>Kampala, Uganda
+              </div>
+              <a href="https://maps.google.com/?q=Palm+Village+Mall+Ggaba+Kampala+Uganda" target="_blank" class="btn-secondary">Open in Google Maps 🗺️</a>
+            </div>
+          </div>
+          <div class="contact-btns">
+            <a href="https://wa.me/256700000000?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Palm%20Village%20Mall%2C%20Ggaba" class="btn-whatsapp" target="_blank">💬 WhatsApp Order</a>
+            <a href="tel:+256700000000" class="btn-call">📞 Call Us</a>
+          </div>
+        </div>
+
+        <!-- Branch 2: Lugogo Mall -->
+        <div class="location-card reveal">
+          <div class="location-header">
+            <span class="location-badge location-badge--new">📍 Branch 2</span>
+            <h3>Lugogo Mall</h3>
+            <p>Lugogo, Kampala</p>
+          </div>
+          <div class="contact-info">
+            <div class="info-card">
+              <div class="info-icon">🕐</div>
+              <div>
+                <strong>Opening Hours</strong>
+                <button class="hours-btn" id="hoursBtn2">View Hours ▼</button>
+                <div class="hours-drop" id="hoursDrop2">
+                  <div class="h-row"><span>Mon – Fri</span><span>7:00 AM – 11:00 PM</span></div>
+                  <div class="h-row"><span>Saturday</span><span>7:00 AM – 11:00 PM</span></div>
+                  <div class="h-row"><span>Sunday</span><span>8:00 AM – 10:00 PM</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon">🚗</div>
+              <div><strong>We Offer</strong><p>Dine-In &nbsp;•&nbsp; Takeaway &nbsp;•&nbsp; Delivery</p></div>
+            </div>
+          </div>
+          <div class="map-container">
+            <div class="map-placeholder">
+              <div class="map-pin-anim">📍</div>
+              <div class="map-label">
+                <strong>Yummy – Lugogo Mall</strong><br/>
+                Lugogo Mall<br/>Kampala, Uganda
+              </div>
+              <a href="https://maps.google.com/?q=Lugogo+Mall+Kampala+Uganda" target="_blank" class="btn-secondary">Open in Google Maps 🗺️</a>
+            </div>
+          </div>
+          <div class="contact-btns">
+            <a href="https://wa.me/256700000000?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Lugogo%20Mall" class="btn-whatsapp" target="_blank">💬 WhatsApp Order</a>
+            <a href="tel:+256700000000" class="btn-call">📞 Call Us</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo-col">
+        <div class="footer-brand">yummy</div>
+        <p>A Tasteful Moment<br/>Palm Village Mall, Ggaba · Kampala<br/>Lugogo Mall · Kampala</p>
+      </div>
+      <div class="footer-links-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#cake-builder">Order Cake</a></li>
+          <li><a href="#gelato">Gelato</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social-col">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" class="social-icon" title="WhatsApp">💬</a>
+          <a href="#" class="social-icon" title="Instagram">📸</a>
+          <a href="#" class="social-icon" title="TikTok">🎵</a>
+          <a href="#" class="social-icon" title="Facebook">📘</a>
+        </div>
+      </div>
+      <div class="footer-news-col">
+        <h4>Newsletter</h4>
+        <p>Daily deals &amp; baking inspiration</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="your@email.com" id="newsletterEmail" />
+          <button onclick="subscribeNewsletter()">Go</button>
+        </div>
+        <div id="newsMsg" style="display:none;color:var(--yellow-dark);margin-top:6px;font-size:.85rem;">🎉 Subscribed! Check your inbox.</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Yummy – A Tasteful Moment. All rights reserved. Made with 🧡 in Kampala, Uganda.</p>
+    </div>
+  </footer>
+
+  <!-- ======== CART SIDEBAR ======== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="close-cart" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty 🍰<br/><small>Add some delicious treats!</small></p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cartTotal">UGX 0</strong></div>
+      <button class="btn-primary glow" onclick="checkoutWhatsApp()">Order via WhatsApp 💬</button>
+    </div>
+  </div>
+
+  <!-- ======== PRODUCT MODAL ======== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="product-modal" id="productModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-emoji" id="modalEmoji">🍰</div>
+      <h2 id="modalName">Product Name</h2>
+      <p id="modalDesc">Description here.</p>
+      <div class="modal-ingredients" id="modalIngredients"></div>
+      <div class="modal-price" id="modalPrice">UGX 0</div>
+      <div class="modal-qty">
+        <button onclick="changeQty(-1)">−</button>
+        <span id="modalQty">1</span>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+      <button class="btn-primary glow" onclick="addFromModal()">Add to Cart 🛒</button>
+    </div>
+  </div>
+
+  <!-- ======== CONFETTI CANVAS ======== -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ======== MOBILE BOTTOM NAV ======== -->
+  <nav class="mobile-bottom-nav">
+    <a href="#menu">🍽️<span>Menu</span></a>
+    <a href="#cake-builder">🎂<span>Cake</span></a>
+    <a href="#gelato">🍦<span>Gelato</span></a>
+    <a href="#contact">📍<span>Find Us</span></a>
+    <button onclick="document.getElementById('cartBtn').click()">🛒<span>Cart</span></button>
+  </nav>
+
+  <!-- ======== FLOATING WHATSAPP ======== -->
+  <a href="https://wa.me/256700000000?text=Hi%20Yummy!%20I%20want%20to%20order" class="floating-order" target="_blank">💬 Order Now</a>
+
+  <script src="app.js"></script>
+</body>
+</html>
