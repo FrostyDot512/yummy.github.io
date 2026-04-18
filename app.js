@@ -12,19 +12,19 @@
 // ============================================================
 
 const menuItems = [
-  { id:1, name:'Jams', emoji:'🍯', img:'jams.png', category:'cakes', price:45000, desc:'Smooth, golden fruit jam sealed fresh for a naturally sweet spread', ingredients:['Cocoa','Cream Cheese','Buttermilk','Red Food Colour'], best:true },
+  { id:1, name:'Jams', emoji:'🍯', img:'jams.png', category:'bread', price:45000, desc:'Smooth, golden fruit jam sealed fresh for a naturally sweet spread', ingredients:['Fresh Fruits','Sugar','Pectin','Lemon Juice'], best:true },
   { id:2, name:'Tiramisu Cake', emoji:'🎂', img:'tiramisu.png', category:'cakes', price:55000, desc:'Classic Italian layers of mascarpone & espresso', ingredients:['Mascarpone','Espresso','Ladyfingers','Cocoa'], best:false },
   { id:3, name:'Chocolate Fudge Cake', emoji:'🍫', img:'chocolate fudge.png', category:'cakes', price:50000, desc:'Rich dark chocolate ganache, fudge-filled layers', ingredients:['Dark Chocolate','Ganache','Butter','Eggs'], best:true },
-  { id:4, name:'White Forest Cake', emoji:'🎂', img:'white forest cake.png', category:'cakes', price:38000, desc:'Light vanilla sponge layered with whipped cream and white chocolate, finished with a delicate, airy sweetness', ingredients:['Lemon Zest','Lemon Juice','Flour','Butter'], best:false },
-  { id:5, name:'Brownie Bites', emoji:'🍪', img:'brownie bites.png', category:'bread', price:18000, desc:'The perfect box of treats for any occasion', ingredients:['Sourdough Starter','Flour','Water','Salt'], best:true },
-  { id:6, name:'KitKat Ice-Cream', emoji:'🍫', img:'kit kat ice-cream.png', category:'bread', price:15000, desc:'Creamy chocolate ice cream loaded with crunchy KitKat pieces for the perfect mix of smooth and crispy indulgence', ingredients:['Wheat','Oats','Flaxseed','Sunflower Seeds'], best:false },
+  { id:4, name:'White Forest Cake', emoji:'🎂', img:'white forest cake.png', category:'cakes', price:38000, desc:'Light vanilla sponge layered with whipped cream and white chocolate, finished with a delicate, airy sweetness', ingredients:['Flour','Sugar','Eggs','Butter','Milk','Whipped Cream','White Chocolate','Vanilla Extract'], best:false },
+  { id:5, name:'Brownie Bites', emoji:'🍪', img:'brownie bites.png', category:'bread', price:18000, desc:'The perfect box of treats for any occasion', ingredients:['Chocolate','Butter','Sugar','Eggs','Flour','Cocoa Powder','Vanilla Extract'], best:true },
+  { id:6, name:'KitKat Ice-Cream', emoji:'🍫', img:'kit kat ice-cream.png', category:'gelato', price:15000, desc:'Creamy chocolate ice cream loaded with crunchy KitKat pieces for the perfect mix of smooth and crispy indulgence', ingredients:['Milk','Cream','Sugar','Cocoa','KitKat Pieces','Vanilla Extract'], best:false },
   { id:7, name:'Pretzel', emoji:'🥨', img:'pretzel.png', category:'bread', price:16000, desc:'Soft golden pretzel with sea salt crust', ingredients:['Flour','Baking Soda','Butter','Sea Salt'], best:false },
   { id:8, name:'Butter Croissant', emoji:'🥐', img:'croissant .png', category:'pastries', price:8000, desc:'Flaky, golden, 72-hour laminated dough', ingredients:['Butter','Flour','Yeast','Milk'], best:true },
   { id:9, name:'Cinnamon Roll', emoji:'🥧', img:'Raisins and cinnamon Danish.png', category:'pastries', price:9000, desc:'Warm swirls drizzled with vanilla glaze', ingredients:['Cinnamon','Cream Cheese Glaze','Dough','Brown Sugar'], best:false },
   { id:10, name:'Fresh Donuts', emoji:'🍩', img:'Fresh Donuts.png', category:'pastries', price:10000, desc:'Fluffy glazed donuts topped with rich icing and colorful sprinkles', ingredients:['Dark Chocolate','Croissant Dough','Butter'], best:false },
-  { id:11, name:'White Chocolate Ice-cream', emoji:'🍦', img:'white chocolate icecream.png', category:'gelato', price:12000, desc:'Creamy white chocolate ice cream with a smooth, velvety sweetness that melts in every bite', ingredients:['Vanilla Bean','Cream','Milk','Sugar'], best:true },
+  { id:11, name:'White Chocolate Ice-cream', emoji:'🍦', img:'white chocolate icecream.png', category:'gelato', price:12000, desc:'Creamy white chocolate ice cream with a smooth, velvety sweetness that melts in every bite', ingredients:['Milk','Cream','Sugar','White Chocolate','Vanilla Extract'], best:true },
   { id:12, name:'Oreo Ice Cream', emoji:'🍪', img:'Oreo flavor Icecream.png', category:'gelato', price:13000, desc:'Cookies & cream gelato with whole Oreos on top', ingredients:['Oreos','Vanilla Cream','Dark Chocolate','Milk'], best:true },
-  { id:13, name:'Truffles', emoji:'🍫', img:'truffles.png', category:'gelato', price:11000, desc:'Decadent chocolate truffles coated in sprinkles and coconut flakes', ingredients:['Fresh Mango','Sugar','Lemon Juice'], best:true },
+  { id:13, name:'Truffles', emoji:'🍫', img:'truffles.png', category:'bread', price:11000, desc:'Decadent chocolate truffles coated in sprinkles and coconut flakes', ingredients:['Chocolate','Cream','Butter','Cocoa Powder','Sprinkles/Coconut Flakes'], best:true },
   { id:14, name:'Ice-Cream Coffee', emoji:'🍦', img:'ICE CREAM COFFEE.png', category:'drinks', price:10000, desc:'Chilled espresso with a scoop of vanilla gelato', ingredients:['Espresso','Ice','Vanilla Gelato','Sugar Syrup'], best:true },
   { id:15, name:'Milkshake', emoji:'🥤', img:'milkshake.png', category:'drinks', price:14000, desc:'Thick creamy shake topped with a praline crisp', ingredients:['Milk','Ice Cream','Cream','Vanilla'], best:true },
   { id:16, name:'Latte Macchiato', emoji:'☕', img:'latte macchiato.png', category:'drinks', price:9000, desc:'Layered espresso and silky steamed milk', ingredients:['Espresso','Steamed Milk','Milk Foam'], best:false },
@@ -119,17 +119,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
 
-// Theme toggle
-const themeBtn = document.getElementById('themeToggle');
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  themeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-  localStorage.setItem('yummy_theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
-if (localStorage.getItem('yummy_theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-  themeBtn.textContent = '☀️';
-}
 
 // ============================================================
 // HERO PARTICLES
@@ -414,7 +403,7 @@ function checkoutWhatsApp() {
   const lines = cart.map(c => `• ${c.name} x${c.qty} = UGX ${(c.price*c.qty).toLocaleString()}`).join('%0A');
   const total = cart.reduce((sum,c) => sum + c.price * c.qty, 0);
   const msg = `Hi Yummy!%0AI'd like to order from Palm Village Mall, Ggaba:%0A%0A${lines}%0A%0ATotal: UGX ${total.toLocaleString()}%0A%0APlease confirm my order. Thank you! 🙏`;
-  window.open(`https://wa.me/256700000000?text=${msg}`, '_blank');
+  window.open(`https://wa.me/256708526671?text=${msg}`, '_blank');
 }
 
 // Cart sidebar toggle
@@ -509,7 +498,7 @@ document.getElementById('orderCakeBtn').addEventListener('click', () => {
     builderState.frosting.price + builderState.toppings.reduce((s,t)=>s+t.price,0) +
     builderState.addons.reduce((s,a)=>s+a.price,0);
   const msg = `Hi Yummy! I'd like to order a custom cake from Palm Village Mall, Ggaba:%0A%0A🎂 Flavour: ${builderState.flavour.val}%0A📏 Size: ${builderState.size.val}%0A🎚️ Layers: ${builderState.layers.val}%0A🎨 Frosting: ${builderState.frosting.val}%0A🍓 Toppings: ${toppings}%0A🎁 Add-ons: ${addons}%0A✍️ Message: "${builderState.message || 'None'}" %0A📅 Date: ${builderState.date || 'TBD'}%0A%0ATOTAL: UGX ${total.toLocaleString()}%0A%0APlease confirm. Thank you! 🙏`;
-  window.open(`https://wa.me/256700000000?text=${msg}`, '_blank');
+  window.open(`https://wa.me/256708526671?text=${msg}`, '_blank');
 });
 
 document.getElementById('saveCakeBtn').addEventListener('click', () => {
