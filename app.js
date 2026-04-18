@@ -58,16 +58,16 @@ const reviews = [
 ];
 
 const spinOptions = [
-  { emoji:'🍰', name:'Red Velvet Cake', desc:'Because life needs more velvet.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
-  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
-  { emoji:'🍦', name:'Salted Caramel Gelato', desc:'Sweet meets salty in the best way.', img:'ice-cream.png' },
-  { emoji:'☕', name:'Latte Macchiato', desc:'The perfect afternoon pick-me-up.', img:'latte_macchiato.png' },
-  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
-  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
+  { emoji:'🍰', name:'Jams', desc:'Smooth, golden fruit jam sealed fresh for a naturally sweet spread', img:'jams.png' },
+  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.', img:'croissant .png' },
+  { emoji:'🍦', name:'Coffee and Coconut', desc:'Sweet meets salty in the best way.', img:'Coffee and Coconut.png' },
+  { emoji:'☕', name:'Latte Macchiato', desc:'The perfect afternoon pick-me-up.', img:'latte macchiato.png' },
+  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.', img:'tiramisu.png' },
+  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.', img:'chocolate fudge.png' },
   { emoji:'🥨', name:'Pretzel', desc:'Warm, salty, and dangerously good.', img:'pretzel.png' },
-  { emoji:'🥭', name:'Mango Sorbet', desc:'Fresh, tropical, and guilt-free joy.', img:'ice-cream.png' },
-  { emoji:'🍞', name:'Sourdough Loaf', desc:'The bread that started it all.', img:'more_bread.png' },
-  { emoji:'🍪', name:'Oreo Ice Cream', desc:'Cookies & cream heaven in a tub.', img:'Oreo_flavor_Icecream.png' },
+  { emoji:'🥭', name:'Fresh Baked Bread', desc:'Fresh out the oven, and ready to enjoy', img:'more bread.png' },
+  { emoji:'🍦', name:'Gelato', desc:'Rich, slow-churned Italian-style gelato with an ultra-smooth texture and intense flavor in every scoop', img:'galato.png' },
+  { emoji:'🍪', name:'Oreo Ice Cream', desc:'Cookies & cream heaven in a tub.', img:'Oreo flavor Icecream.png' },
 ];
 
 // ============================================================
@@ -511,21 +511,27 @@ document.getElementById('saveCakeBtn').addEventListener('click', () => {
 updateBuilder();
 
 // ============================================================
-// GELATO TRACK
+// GELATO TRACK — Image Gallery
 // ============================================================
 (function renderGelato() {
   const track = document.getElementById('gelatoTrack');
-  gelatoFlavours.forEach(fl => {
+
+  // All available ice cream images to showcase
+  const gelatoImages = [
+    { img: 'ice-cream.png',              alt: 'Gelato scoops' },
+    { img: 'galato.png',                 alt: 'Gelato bar' },
+    { img: 'Oreo flavor Icecream.png',   alt: 'Oreo ice cream' },
+    { img: 'white chocolate icecream.png', alt: 'White chocolate ice cream' },
+    { img: 'kit kat ice-cream.png',      alt: 'KitKat ice cream' },
+    { img: 'ICE CREAM COFFEE.png',       alt: 'Ice cream coffee' },
+    { img: 'ice-cream.png',              alt: 'Fruity gelato scoops' },
+    { img: 'galato.png',                 alt: 'Colourful gelato display' },
+  ];
+
+  gelatoImages.forEach(item => {
     const card = document.createElement('div');
-    card.className = 'gelato-card';
-    card.innerHTML = `
-      ${fl.best ? '<div class="gelato-best">⭐ Popular</div>' : ''}
-      ${fl.img ? `<img src="${fl.img}" alt="${fl.name}" class="gelato-img" />` : `<span class="gelato-scoop">${fl.emoji}</span>`}
-      <div class="gelato-name">${fl.name}</div>
-      <div class="gelato-desc">${fl.desc}</div>
-      <div class="gelato-pop">🧂 ${fl.ingredients}</div>
-    `;
-    card.style.background = `linear-gradient(135deg, ${fl.colour}33, #FFFDF0)`;
+    card.className = 'gelato-card gelato-img-only';
+    card.innerHTML = `<img src="${item.img}" alt="${item.alt}" class="gelato-img gelato-img-full" />`;
     track.appendChild(card);
   });
 })();
