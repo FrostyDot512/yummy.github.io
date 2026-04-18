@@ -12,57 +12,62 @@
 // ============================================================
 
 const menuItems = [
-  { id:1, name:'Red Velvet Cake', emoji:'🍰', category:'cakes', price:45000, desc:'Velvet-soft layers with cream cheese frosting', ingredients:['Cocoa','Cream Cheese','Buttermilk','Red Food Colour'], best:true },
-  { id:2, name:'Tiramisu Cake', emoji:'🎂', category:'cakes', price:55000, desc:'Classic Italian layers of mascarpone & espresso', ingredients:['Mascarpone','Espresso','Ladyfingers','Cocoa'], best:false },
-  { id:3, name:'Chocolate Fudge Cake', emoji:'🍫', category:'cakes', price:50000, desc:'Rich dark chocolate ganache, fudge-filled layers', ingredients:['Dark Chocolate','Ganache','Butter','Eggs'], best:true },
-  { id:4, name:'Lemon Drizzle Cake', emoji:'🍋', category:'cakes', price:38000, desc:'Zesty lemon sponge with tangy glaze', ingredients:['Lemon Zest','Lemon Juice','Flour','Butter'], best:false },
-  { id:5, name:'Sourdough Loaf', emoji:'🍞', category:'bread', price:18000, desc:'Slow-fermented, crisp crust, chewy crumb', ingredients:['Sourdough Starter','Flour','Water','Salt'], best:true },
-  { id:6, name:'Multigrain Bread', emoji:'🫓', category:'bread', price:15000, desc:'Nutty, wholesome & baked fresh daily', ingredients:['Wheat','Oats','Flaxseed','Sunflower Seeds'], best:false },
-  { id:7, name:'Cinnamon Bread', emoji:'🥖', category:'bread', price:16000, desc:'Soft loaf with swirls of cinnamon sugar', ingredients:['Cinnamon','Brown Sugar','Butter','Yeast'], best:false },
-  { id:8, name:'Butter Croissant', emoji:'🥐', category:'pastries', price:8000, desc:'Flaky, golden, 72-hour laminated dough', ingredients:['Butter','Flour','Yeast','Milk'], best:true },
-  { id:9, name:'Cinnamon Roll', emoji:'🥧', category:'pastries', price:9000, desc:'Warm swirls drizzled with vanilla glaze', ingredients:['Cinnamon','Cream Cheese Glaze','Dough','Brown Sugar'], best:false },
-  { id:10, name:'Pain au Chocolat', emoji:'🍫', category:'pastries', price:10000, desc:'Buttery pastry encasing dark chocolate batons', ingredients:['Dark Chocolate','Croissant Dough','Butter'], best:false },
-  { id:11, name:'Vanilla Gelato', emoji:'🍦', category:'gelato', price:12000, desc:'Classic Madagascar vanilla bean gelato', ingredients:['Vanilla Bean','Cream','Milk','Sugar'], best:true },
-  { id:12, name:'Chocolate Gelato', emoji:'🍫', category:'gelato', price:12000, desc:'Dark Belgian chocolate, intensely creamy', ingredients:['Belgian Chocolate','Cream','Cocoa','Sugar'], best:false },
-  { id:13, name:'Mango Sorbet', emoji:'🥭', category:'gelato', price:11000, desc:'Tropical Ugandan mango, 100% natural', ingredients:['Fresh Mango','Sugar','Lemon Juice'], best:true },
-  { id:14, name:'Iced Coffee', emoji:'☕', category:'drinks', price:10000, desc:'Chilled espresso over ice with cream', ingredients:['Espresso','Ice','Cream','Sugar Syrup'], best:false },
-  { id:15, name:'Mango Smoothie', emoji:'🥤', category:'drinks', price:12000, desc:'Fresh mango blended with yoghurt & honey', ingredients:['Mango','Yoghurt','Honey','Ice'], best:false },
-  { id:16, name:'Cappuccino', emoji:'☕', category:'drinks', price:9000, desc:'Velvety milk foam, double espresso', ingredients:['Espresso','Steamed Milk','Milk Foam'], best:true },
+  { id:1, name:'Jams', emoji:'🍯', img:'jams.png', category:'cakes', price:45000, desc:'Smooth, golden fruit jam sealed fresh for a naturally sweet spread', ingredients:['Cocoa','Cream Cheese','Buttermilk','Red Food Colour'], best:true },
+  { id:2, name:'Tiramisu Cake', emoji:'🎂', img:'tiramisu.png', category:'cakes', price:55000, desc:'Classic Italian layers of mascarpone & espresso', ingredients:['Mascarpone','Espresso','Ladyfingers','Cocoa'], best:false },
+  { id:3, name:'Chocolate Fudge Cake', emoji:'🍫', img:'chocolate fudge.png', category:'cakes', price:50000, desc:'Rich dark chocolate ganache, fudge-filled layers', ingredients:['Dark Chocolate','Ganache','Butter','Eggs'], best:true },
+  { id:4, name:'White Forest Cake', emoji:'🎂', img:'white forest cake.png', category:'cakes', price:38000, desc:'Light vanilla sponge layered with whipped cream and white chocolate, finished with a delicate, airy sweetness', ingredients:['Lemon Zest','Lemon Juice','Flour','Butter'], best:false },
+  { id:5, name:'Brownie Bites', emoji:'🍪', img:'brownie bites.png', category:'bread', price:18000, desc:'The perfect box of treats for any occasion', ingredients:['Sourdough Starter','Flour','Water','Salt'], best:true },
+  { id:6, name:'KitKat Ice-Cream', emoji:'🍫', img:'kit kat ice-cream.png', category:'bread', price:15000, desc:'Creamy chocolate ice cream loaded with crunchy KitKat pieces for the perfect mix of smooth and crispy indulgence', ingredients:['Wheat','Oats','Flaxseed','Sunflower Seeds'], best:false },
+  { id:7, name:'Pretzel', emoji:'🥨', img:'pretzel.png', category:'bread', price:16000, desc:'Soft golden pretzel with sea salt crust', ingredients:['Flour','Baking Soda','Butter','Sea Salt'], best:false },
+  { id:8, name:'Butter Croissant', emoji:'🥐', img:'croissant .png', category:'pastries', price:8000, desc:'Flaky, golden, 72-hour laminated dough', ingredients:['Butter','Flour','Yeast','Milk'], best:true },
+  { id:9, name:'Cinnamon Roll', emoji:'🥧', img:'Raisins and cinnamon Danish.png', category:'pastries', price:9000, desc:'Warm swirls drizzled with vanilla glaze', ingredients:['Cinnamon','Cream Cheese Glaze','Dough','Brown Sugar'], best:false },
+  { id:10, name:'Fresh Donuts', emoji:'🍩', img:'Fresh Donuts.png', category:'pastries', price:10000, desc:'Fluffy glazed donuts topped with rich icing and colorful sprinkles', ingredients:['Dark Chocolate','Croissant Dough','Butter'], best:false },
+  { id:11, name:'White Chocolate Ice-cream', emoji:'🍦', img:'white chocolate icecream.png', category:'gelato', price:12000, desc:'Creamy white chocolate ice cream with a smooth, velvety sweetness that melts in every bite', ingredients:['Vanilla Bean','Cream','Milk','Sugar'], best:true },
+  { id:12, name:'Oreo Ice Cream', emoji:'🍪', img:'Oreo flavor Icecream.png', category:'gelato', price:13000, desc:'Cookies & cream gelato with whole Oreos on top', ingredients:['Oreos','Vanilla Cream','Dark Chocolate','Milk'], best:true },
+  { id:13, name:'Truffles', emoji:'🍫', img:'truffles.png', category:'gelato', price:11000, desc:'Decadent chocolate truffles coated in sprinkles and coconut flakes', ingredients:['Fresh Mango','Sugar','Lemon Juice'], best:true },
+  { id:14, name:'Ice-Cream Coffee', emoji:'🍦', img:'ICE CREAM COFFEE.png', category:'drinks', price:10000, desc:'Chilled espresso with a scoop of vanilla gelato', ingredients:['Espresso','Ice','Vanilla Gelato','Sugar Syrup'], best:true },
+  { id:15, name:'Milkshake', emoji:'🥤', img:'milkshake.png', category:'drinks', price:14000, desc:'Thick creamy shake topped with a praline crisp', ingredients:['Milk','Ice Cream','Cream','Vanilla'], best:true },
+  { id:16, name:'Latte Macchiato', emoji:'☕', img:'latte macchiato.png', category:'drinks', price:9000, desc:'Layered espresso and silky steamed milk', ingredients:['Espresso','Steamed Milk','Milk Foam'], best:false },
+  { id:17, name:'Flavoured Coffee', emoji:'☕', img:'moreCoffee.png', category:'drinks', price:11000, desc:'Monin caramel or hazelnut syrup latte', ingredients:['Espresso','Monin Syrup','Steamed Milk','Cream'], best:false },
 ];
 
 const gelatoFlavours = [
-  { name:'Vanilla', emoji:'🍦', colour:'#FFF8B0', desc:'Madagascar vanilla bean', ingredients:'Cream, Vanilla Bean, Sugar', best:true },
-  { name:'Chocolate', emoji:'🍫', colour:'#4A2C1A', desc:'Belgian dark chocolate', ingredients:'Dark Chocolate, Cream, Cocoa', best:false },
-  { name:'Strawberry', emoji:'🍓', colour:'#FFD6D6', desc:'Fresh seasonal berries', ingredients:'Strawberries, Cream, Sugar', best:true },
-  { name:'Salted Caramel', emoji:'🍮', colour:'#D4A843', desc:'Sea salt & caramel swirl', ingredients:'Caramel, Sea Salt, Cream', best:false },
-  { name:'Pistachio', emoji:'🌿', colour:'#C8E6C9', desc:'Sicilian pistachio paste', ingredients:'Pistachios, Milk, Sugar', best:true },
-  { name:'Mango', emoji:'🥭', colour:'#FFE0A0', desc:'Tropical Ugandan mango', ingredients:'Fresh Mango, Lemon, Sugar', best:true },
-  { name:'Coffee', emoji:'☕', colour:'#8B5E3C', desc:'Double-shot espresso cream', ingredients:'Espresso, Cream, Sugar', best:false },
-  { name:'Cookies & Cream', emoji:'🍪', colour:'#F0EDE8', desc:'Crushed Oreos & vanilla', ingredients:'Oreos, Vanilla Cream, Milk', best:false },
-  { name:'Passion Fruit', emoji:'🌺', colour:'#FFC0CB', desc:'Tangy tropical sorbet', ingredients:'Passion Fruit, Sugar, Lime', best:false },
-  { name:'Coconut', emoji:'🥥', colour:'#F0F8E8', desc:'Creamy tropical coconut', ingredients:'Coconut Milk, Cream, Sugar', best:false },
+  { name:'Vanilla', emoji:'🍦', img:'ice-cream.png', colour:'#FFF8B0', desc:'Madagascar vanilla bean', ingredients:'Cream, Vanilla Bean, Sugar', best:true },
+  { name:'Chocolate', emoji:'🍫', img:null, colour:'#4A2C1A', desc:'Belgian dark chocolate', ingredients:'Dark Chocolate, Cream, Cocoa', best:false },
+  { name:'Strawberry', emoji:'🍓', img:'ice-cream.png', colour:'#FFD6D6', desc:'Fresh seasonal berries', ingredients:'Strawberries, Cream, Sugar', best:true },
+  { name:'Salted Caramel', emoji:'🍮', img:null, colour:'#D4A843', desc:'Sea salt & caramel swirl', ingredients:'Caramel, Sea Salt, Cream', best:false },
+  { name:'Pistachio', emoji:'🌿', img:'ice-cream.png', colour:'#C8E6C9', desc:'Sicilian pistachio paste', ingredients:'Pistachios, Milk, Sugar', best:true },
+  { name:'Mango', emoji:'🥭', img:'ice-cream.png', colour:'#FFE0A0', desc:'Tropical Ugandan mango', ingredients:'Fresh Mango, Lemon, Sugar', best:true },
+  { name:'Coffee', emoji:'☕', img:'ICE_CREAM_COFFEE.png', colour:'#8B5E3C', desc:'Double-shot espresso cream', ingredients:'Espresso, Cream, Sugar', best:false },
+  { name:'Cookies & Cream', emoji:'🍪', img:'Oreo_flavor_Icecream.png', colour:'#F0EDE8', desc:'Crushed Oreos & vanilla', ingredients:'Oreos, Vanilla Cream, Milk', best:true },
+  { name:'Passion Fruit', emoji:'🌺', img:'ice-cream.png', colour:'#FFC0CB', desc:'Tangy tropical sorbet', ingredients:'Passion Fruit, Sugar, Lime', best:false },
+  { name:'Coconut', emoji:'🥥', img:null, colour:'#F0F8E8', desc:'Creamy tropical coconut', ingredients:'Coconut Milk, Cream, Sugar', best:false },
 ];
 
 const reviews = [
-  { text:'The best sourdough bread in Kampala, hands down. That crust! Perfectly chewy inside. I come every Saturday morning.', stars:5, name:'Amara K.', location:'Ggaba, Kampala', avatar:'A' },
-  { text:'Ordered a custom Red Velvet birthday cake and it was absolutely stunning. Everyone at the party loved it! Will order again.', stars:5, name:'James O.', location:'Ntinda, Kampala', avatar:'J' },
-  { text:'The gelato selection is insane. Salted Caramel is my go-to. Super creamy, not too sweet. Love this place!', stars:5, name:'Priya M.', location:'Kololo, Kampala', avatar:'P' },
-  { text:'Great variety of pastries. The croissants are buttery and flaky — just like in Paris. Cozy spot to work from.', stars:5, name:'David N.', location:'Bugolobi, Kampala', avatar:'D' },
-  { text:'Yummy is my weekend ritual. Coffee + cinnamon roll = perfect morning. Friendly staff, beautiful ambiance.', stars:5, name:'Sarah W.', location:'Ggaba, Kampala', avatar:'S' },
-  { text:'The Tiramisu cake was heavenly. Rich, perfectly balanced, and the custom message was beautifully piped. 10/10!', stars:5, name:'Ibrahim T.', location:'Makindye, Kampala', avatar:'I' },
+  { text:'The best sourdough bread in Kampala, hands down. That crust! Perfectly chewy inside. I come every Saturday morning.', stars:5, name:'Amara K.', location:'Ggaba, Kampala', avatar:'A', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Ordered a custom Red Velvet birthday cake and it was absolutely stunning. Everyone at the party loved it! Will order again.', stars:5, name:'James O.', location:'Ntinda, Kampala', avatar:'J', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'The gelato selection is insane. Salted Caramel is my go-to. Super creamy, not too sweet. Love this place!', stars:5, name:'Priya M.', location:'Kololo, Kampala', avatar:'P', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Great variety of pastries. The croissants are buttery and flaky — just like in Paris. Cozy spot to work from.', stars:5, name:'David N.', location:'Bugolobi, Kampala', avatar:'D', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Yummy is my weekend ritual. Coffee + cinnamon roll = perfect morning. Friendly staff, beautiful ambiance.', stars:5, name:'Sarah W.', location:'Ggaba, Kampala', avatar:'S', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'The Tiramisu cake was heavenly. Rich, perfectly balanced, and the custom message was beautifully piped. 10/10!', stars:5, name:'Ibrahim T.', location:'Makindye, Kampala', avatar:'I', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Cookies & Cream gelato is dangerously good. The whole Oreo on top is such a nice touch. My kids go crazy for it!', stars:5, name:'Grace N.', location:'Naguru, Kampala', avatar:'G', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Stopped in for coffee and ended up buying bread, pretzels and a cake slice. The flavoured lattes with Monin syrups are excellent.', stars:5, name:'Michael A.', location:'Muyenga, Kampala', avatar:'M', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'The milkshake at Yummy is one of the best I have had anywhere. Thick, creamy and beautifully presented. Highly recommend.', stars:5, name:'Fatuma R.', location:'Bukoto, Kampala', avatar:'F', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
+  { text:'Palm Village Mall location has the best ambiance. Perfect spot for a date or catching up with friends over coffee and pastries.', stars:5, name:'Brian K.', location:'Kisugu, Kampala', avatar:'B', link:'https://www.google.com/maps/place/Yummy+A+Tasteful+Moment/@0.2902,32.5893,17z' },
 ];
 
 const spinOptions = [
-  { emoji:'🍰', name:'Red Velvet Cake', desc:'Because life needs more velvet.', img:'cakes.png' },
-  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.', img:'baked_pastries.png' },
-  { emoji:'🍦', name:'Salted Caramel Gelato', desc:'Sweet meets salty in the best way.', img:'different_variety_icecream.png' },
-  { emoji:'☕', name:'Cappuccino', desc:'The perfect afternoon pick-me-up.', img:'artisanal_cappuccino_paired_with_one_of_our_house_made_pastries_.png' },
-  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.', img:'cakes.png' },
-  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.', img:'chocolate_fudge.png' },
-  { emoji:'🥧', name:'Cinnamon Roll', desc:'Warm, glazed, and dangerously good.', img:'baked_pastries.png' },
-  { emoji:'🥭', name:'Mango Sorbet', desc:'Fresh, tropical, and guilt-free joy.', img:'different_variety_icecream.png' },
-  { emoji:'🍞', name:'Sourdough Slice', desc:'The bread that started it all.', img:'everything.png' },
-  { emoji:'🍩', name:'Fresh Glazed Donut', desc:'Classic, glazed, and perfect.', img:'Fresh_Donuts.png' },
+  { emoji:'🍰', name:'Red Velvet Cake', desc:'Because life needs more velvet.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
+  { emoji:'🥐', name:'Butter Croissant', desc:'Golden, flaky, and absolutely worth it.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
+  { emoji:'🍦', name:'Salted Caramel Gelato', desc:'Sweet meets salty in the best way.', img:'ice-cream.png' },
+  { emoji:'☕', name:'Latte Macchiato', desc:'The perfect afternoon pick-me-up.', img:'latte_macchiato.png' },
+  { emoji:'🎂', name:'Tiramisu Cake Slice', desc:'Italy meets Kampala in one bite.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
+  { emoji:'🍫', name:'Chocolate Fudge Cake', desc:'Chocolate therapy — highly recommended.', img:'Nutella_crunch_and_our_Croissant_cake.png' },
+  { emoji:'🥨', name:'Pretzel', desc:'Warm, salty, and dangerously good.', img:'pretzel.png' },
+  { emoji:'🥭', name:'Mango Sorbet', desc:'Fresh, tropical, and guilt-free joy.', img:'ice-cream.png' },
+  { emoji:'🍞', name:'Sourdough Loaf', desc:'The bread that started it all.', img:'more_bread.png' },
+  { emoji:'🍪', name:'Oreo Ice Cream', desc:'Cookies & cream heaven in a tub.', img:'Oreo_flavor_Icecream.png' },
 ];
 
 // ============================================================
@@ -234,7 +239,7 @@ function renderMenu(filter = 'all') {
     div.dataset.category = item.category;
     div.innerHTML = `
       <div class="card-img-wrap">
-        <span>${item.emoji}</span>
+        ${item.img ? `<img src="${item.img}" alt="${item.name}" class="card-photo" />` : `<span>${item.emoji}</span>`}
         ${item.best ? '<div class="best-tag">⭐ Best Seller</div>' : ''}
         <button class="card-heart ${isFav ? 'liked' : ''}" data-id="${item.id}" title="${isFav ? 'Remove favourite':'Add to favourites'}" onclick="toggleFav(event,${item.id})">
           ${isFav ? '❤️' : '🤍'}
@@ -526,7 +531,7 @@ updateBuilder();
     card.className = 'gelato-card';
     card.innerHTML = `
       ${fl.best ? '<div class="gelato-best">⭐ Popular</div>' : ''}
-      <span class="gelato-scoop">${fl.emoji}</span>
+      ${fl.img ? `<img src="${fl.img}" alt="${fl.name}" class="gelato-img" />` : `<span class="gelato-scoop">${fl.emoji}</span>`}
       <div class="gelato-name">${fl.name}</div>
       <div class="gelato-desc">${fl.desc}</div>
       <div class="gelato-pop">🧂 ${fl.ingredients}</div>
@@ -571,6 +576,9 @@ updateBuilder();
           <div class="review-name">${r.name}</div>
           <div class="review-location">📍 ${r.location}</div>
         </div>
+        <a href="${r.link}" target="_blank" rel="noopener" class="review-google-link" title="See on Google">
+          <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        </a>
       </div>
     `;
     track.appendChild(card);
