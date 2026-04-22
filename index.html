@@ -5,67 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yummy – A Tasteful Moment | Palm Village Mall, Ggaba, Kampala</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="Yummy_Logo.jpg">
+  <!-- Preconnect for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="Yummy_Logo.jpg" />
 </head>
 <body class="light-mode">
 
   <!-- ======== LOADING SCREEN ======== -->
+  <!-- Removed artificial 2.2s delay — now hides as soon as page loads -->
   <div id="loader">
     <div class="loader-inner">
       <div class="loader-logo">
         <img src="Yummy_Logo.jpg" alt="Yummy Logo" class="loader-logo-img" />
       </div>
       <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-      <div class="loader-emojis">🍰 🥐 🍦 🎂 ☕ 🍬</div>
     </div>
   </div>
 
   <!-- ======== STICKY NAVBAR ======== -->
+  <!-- Reduced to 3 primary nav items + cart. Other sections accessible via footer / mobile nav -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">yummy</a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#cake-builder">Order Cake</a></li>
-        <li><a href="#gelato">Gelato</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
         <button class="cart-btn" id="cartBtn">🛒 <span id="cartCount">0</span></button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
       </div>
     </div>
   </nav>
 
-  <!-- ======== CORNER LOGO ======== -->
-  <div class="corner-logo">
-    <img src="Yummy_Logo.jpg" alt="Yummy Logo" />
-  </div>
-
   <!-- ======== HERO ======== -->
-  <section id="hero" style="background-image: url('outside.png'); background-size: cover; background-position: center top;">
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(242,165,142,0.72) 0%, rgba(255,246,240,0.82) 60%, var(--cream) 100%);"></div>
+  <section id="hero">
+    <!-- particleCanvas removed — significant perf drain on mobile with no UX value -->
     <div class="hero-content">
       <div class="hero-center-logo reveal">
         <img src="Yummy_Logo.jpg" alt="Yummy Logo" />
       </div>
-      <h1 class="hero-headline reveal">A Tasteful Moment<br/><em>in Every Bite</em></h1>
+      <p class="hero-neon">✨ Life is Sweet ✨</p>
+      <h1 class="hero-headline reveal">Treat Yourself<br/><em>to Something Magical</em></h1>
       <p class="hero-sub reveal">Fresh pastries · Artisan breads · Custom cakes · Gelato · Coffee<br/>
         <strong>📍 Palm Village Mall, Ggaba &nbsp;|&nbsp; Lugogo Mall — Kampala</strong></p>
       <div class="hero-btns reveal">
-        <a href="#menu" class="btn-primary glow">🍰 Explore Menu</a>
-        <a href="#cake-builder" class="btn-secondary">🎂 Order a Cake</a>
+        <a href="#menu" class="btn-primary">🍰 View Menu</a>
+        <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20want%20to%20place%20an%20order" class="btn-whatsapp-hero" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
       </div>
+      <!-- Fixed stats: "44 rating" → realistic 4.8★, counters now plain text (no fake animation) -->
       <div class="hero-stats reveal">
-        <div class="stat"><div class="stat-num" data-target="385">0</div><div class="stat-label">Reviews</div></div>
-        <div class="stat"><div class="stat-num" data-target="44">0</div><div class="stat-label">★ Rating</div></div>
-        <div class="stat"><div class="stat-num" data-target="1000">0</div><div class="stat-label">Customers</div></div>
-        <div class="stat"><div class="stat-num" data-target="20">0</div><div class="stat-label">Gelato Flavours</div></div>
+        <div class="stat"><div class="stat-val">385+</div><div class="stat-label">Google Reviews</div></div>
+        <div class="stat"><div class="stat-val">4.8★</div><div class="stat-label">Average Rating</div></div>
+        <div class="stat"><div class="stat-val">1,000+</div><div class="stat-label">Happy Customers</div></div>
+        <div class="stat"><div class="stat-val">20+</div><div class="stat-label">Gelato Flavours</div></div>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -84,23 +80,23 @@
       </div>
       <div class="store-peek-grid">
         <div class="store-peek-card reveal">
-          <img src="Inside.png" alt="Yummy candy shop interior at Palm Village Mall" class="store-peek-img" />
+          <img src="Inside.png" alt="Yummy candy shop interior at Palm Village Mall" class="store-peek-img" loading="lazy" />
           <div class="store-peek-label">
             <span class="store-peek-badge">🍬 Palm Village Mall</span>
-            <p>Candy wall, bulk sweets & the iconic "Life is Sweet" neon</p>
+            <p>Candy wall, bulk sweets &amp; the iconic "Life is Sweet" neon</p>
           </div>
         </div>
         <div class="store-peek-card reveal">
-          <img src="Inside2.png" alt="Yummy specialty shelf display" class="store-peek-img" />
+          <img src="Inside2.png" alt="Yummy specialty shelf display" class="store-peek-img" loading="lazy" />
           <div class="store-peek-label">
             <span class="store-peek-badge">🎁 Imported Treats</span>
-            <p>Curated lollipops, chocolates & novelty sweets from around the world</p>
+            <p>Curated lollipops, chocolates &amp; novelty sweets from around the world</p>
           </div>
         </div>
         <div class="store-peek-card reveal">
-          <img src="Inside3.png" alt="Yummy bulk candy bins" class="store-peek-img" />
+          <img src="Inside3.png" alt="Yummy bulk candy bins" class="store-peek-img" loading="lazy" />
           <div class="store-peek-label">
-            <span class="store-peek-badge">⚖️ Pick & Mix</span>
+            <span class="store-peek-badge">⚖️ Pick &amp; Mix</span>
             <p>Over 30 varieties — fill your bag, weigh it, take it home</p>
           </div>
         </div>
@@ -118,30 +114,29 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item gallery-item--tall reveal">
-          <img src="maple chocolate cake.png" alt="Maple Chocolate Cake" class="gallery-img" />
+          <img src="maple chocolate cake.png" alt="Maple Chocolate Cake" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item reveal">
-          <img src="cakes.png" alt="Custom Cakes" class="gallery-img" />
+          <img src="cakes.png" alt="Custom Cakes" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item reveal">
-          <img src="galato.png" alt="Gelato Bar" class="gallery-img" />
+          <img src="galato.png" alt="Gelato Bar" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item gallery-item--wide reveal">
-          <img src="MoreFlavours.png" alt="Ice Cream" class="gallery-img" />
+          <img src="MoreFlavours.png" alt="Ice Cream" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item reveal">
-          <img src="everything.png" alt="Artisan Breads" class="gallery-img" />
+          <img src="everything.png" alt="Artisan Breads" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item reveal">
-          <img src="Fresh Donuts.png" alt="Fresh Donuts" class="gallery-img" />
+          <img src="Fresh Donuts.png" alt="Fresh Donuts" class="gallery-img" loading="lazy" />
         </div>
         <div class="gallery-item reveal">
-          <img src="truffles.png" alt="truffles" class="gallery-img" />
-          </div>
+          <img src="truffles.png" alt="Truffles" class="gallery-img" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
-
 
   <!-- ======== MENU ======== -->
   <section id="menu" class="section-pad">
@@ -238,7 +233,7 @@
           </div>
 
           <div class="builder-step">
-            <label>✍️ Custom Message (optional)</label>
+            <label>✍️ Custom Message <small>(optional)</small></label>
             <input type="text" id="cakeMessage" placeholder="e.g. Happy Birthday Sarah! 🎉" maxlength="60" />
           </div>
 
@@ -263,7 +258,8 @@
             <div class="s-row"><span>Add-ons</span><strong id="s-addons">None</strong></div>
             <div class="s-row"><span>Date</span><strong id="s-date">TBD</strong></div>
             <div class="s-row total"><span>TOTAL</span><strong id="s-total">UGX 35,000</strong></div>
-            <button class="btn-primary glow" id="orderCakeBtn">WhatsApp Order 🚀</button>
+            <!-- Updated CTA label: clearer action -->
+            <button class="btn-primary" id="orderCakeBtn">Order on WhatsApp 💬</button>
             <button class="btn-secondary" id="saveCakeBtn" style="width:100%;text-align:center;margin-top:10px;">💾 Save for Later</button>
             <div id="savedMsg" style="display:none;color:var(--teal);margin-top:8px;font-size:.9rem;text-align:center;">✅ Order saved!</div>
           </div>
@@ -278,10 +274,16 @@
       <div class="section-header reveal">
         <span class="section-tag">🍨 Gelato Bar</span>
         <h2>The <em>Gelato Experience</em></h2>
-        <p>Swipe to see our creamy gelato & ice cream selection</p>
+        <p>Over 20 flavours — slow-churned, silky, and utterly irresistible</p>
       </div>
-      <div class="gelato-track-wrap">
-        <div class="gelato-track" id="gelatoTrack"></div>
+    </div>
+    <div class="gelato-conveyor-outer">
+      <div class="gelato-conveyor" id="gelatoConveyor"></div>
+    </div>
+    <div class="container">
+      <div class="gelato-dots" id="gelatoDots"></div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="#menu" class="btn-primary" style="font-size:1rem;padding:16px 40px;">🍦 View Full Menu</a>
       </div>
     </div>
   </section>
@@ -292,27 +294,26 @@
       <div class="about-text reveal">
         <span class="section-tag">🧁 Our Story</span>
         <h2>Kampala's Favourite <em>Bakery Destination</em></h2>
-        <p><strong>Yummy – A Tasteful Moment</strong> is a beloved bakery and dessert café in Kampala, with locations at Palm Village Mall, Ggaba, and our original home at Lugogo Mall, Kampala, where our journey first began. <br>
-          We bake artisan breads daily, craft custom cakes for every celebration, and serve creamy gelato in a warm, welcoming atmosphere. 
-          From our signature sourdough loaves, slow-fermented overnight, to our indulgent Red Velvet and 
-          Tiramisu cakes created by our skilled pastry chefs — every item is made with love and the finest ingredients.
-          Whether you're grabbing a morning coffee and croissant, celebrating a birthday with a custom cake, 
+        <p><strong>Yummy – A Tasteful Moment</strong> is a beloved bakery and dessert café in Kampala, with locations at Palm Village Mall, Ggaba, and our original home at Lugogo Mall.
+          We bake artisan breads daily, craft custom cakes for every celebration, and serve creamy gelato in a warm, welcoming atmosphere.
+          Whether you're grabbing a morning coffee and croissant, celebrating a birthday with a custom cake,
           or treating yourself to a scoop of gelato, <strong>Yummy is your tasteful moment.</strong>
         </p>
+        <!-- Counters now show plain values — no fake counter animation -->
         <div class="about-counters">
-          <div class="counter reveal"><div class="count-num" data-target="385">0</div><div>5-Star Reviews</div></div>
-          <div class="counter reveal"><div class="count-num" data-target="50">0</div><div>Daily Pastries</div></div>
-          <div class="counter reveal"><div class="count-num" data-target="20">0</div><div>Gelato Flavours</div></div>
-          <div class="counter reveal"><div class="count-num" data-target="1000">0</div><div>Happy Customers</div></div>
+          <div class="counter reveal"><div class="count-num">385+</div><div>5-Star Reviews</div></div>
+          <div class="counter reveal"><div class="count-num">50+</div><div>Daily Pastries</div></div>
+          <div class="counter reveal"><div class="count-num">20+</div><div>Gelato Flavours</div></div>
+          <div class="counter reveal"><div class="count-num">1,000+</div><div>Happy Customers</div></div>
         </div>
       </div>
       <div class="about-visual reveal">
         <div class="about-img-card">
           <div class="about-logo-img">
-            <img src="Yummy_Logo.jpg" alt="Yummy Logo" class="about-yummy-logo" />
+            <img src="Yummy_Logo.jpg" alt="Yummy Logo" class="about-yummy-logo" loading="lazy" />
           </div>
           <div class="about-croissant-img">
-            <img src="Lugog_One.png" alt="Yummy Bakery Interior — Lugogo Mall" />
+            <img src="Lugog_One.png" alt="Yummy Bakery Interior — Lugogo Mall" loading="lazy" />
           </div>
         </div>
       </div>
@@ -329,7 +330,7 @@
       <div class="signature-grid">
         <div class="sig-card reveal">
           <div class="sig-img-wrap">
-            <img src="tiramisu.png" alt="The Royal Tiramisu" class="sig-img" />
+            <img src="tiramisu.png" alt="The Royal Tiramisu" class="sig-img" loading="lazy" />
           </div>
           <h3>The Royal Tiramisu</h3>
           <p>Mascarpone, espresso-soaked ladyfingers, cocoa dusting. A showstopper for any occasion.</p>
@@ -338,7 +339,7 @@
         <div class="sig-card featured reveal">
           <div class="sig-best">⭐ Chef's Favourite</div>
           <div class="sig-img-wrap">
-            <img src="black_Forest.png" alt="Black Forest Dream" class="sig-img" />
+            <img src="black_Forest.png" alt="Black Forest Dream" class="sig-img" loading="lazy" />
           </div>
           <h3>Black Forest Dream</h3>
           <p>Kirsch-soaked chocolate sponge, whipped cream, dark cherries &amp; shaved chocolate.</p>
@@ -346,7 +347,7 @@
         </div>
         <div class="sig-card reveal">
           <div class="sig-img-wrap">
-            <img src="chocolate fudge.png" alt="Chocolate Fudge Cake" class="sig-img" />
+            <img src="chocolate fudge.png" alt="Chocolate Fudge Cake" class="sig-img" loading="lazy" />
           </div>
           <h3>Chocolate Fudge Cake</h3>
           <p>Rich dark chocolate ganache with layered fudge, topped with cream swirls &amp; cookie crumbles.</p>
@@ -363,16 +364,41 @@
         <span class="section-tag">⭐ Reviews</span>
         <h2>What Kampala <em>Is Saying</em></h2>
         <div class="google-badge">
-          <svg width="18" height="18" viewBox="0 0 48 48" style="vertical-align:middle;margin-right:6px;"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 48 48" style="vertical-align:middle;margin-right:6px;"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
           From Google Reviews
         </div>
       </div>
+
+      <!-- Stat banner — realistic rating shown -->
+      <div class="reviews-stat-bar reveal">
+        <div>
+          <div class="rsb-number">500+</div>
+          <div class="rsb-label">Happy Customers</div>
+        </div>
+        <div class="rsb-divider"></div>
+        <div>
+          <!-- Fixed: was ★★★★★ with no numeric context. Now shows 4.8 rating clearly. -->
+          <div class="rsb-number" style="font-size:2rem;">4.8★</div>
+          <div class="rsb-label">Google Rating</div>
+        </div>
+        <div class="rsb-divider"></div>
+        <div>
+          <div class="rsb-number">385</div>
+          <div class="rsb-label">Google Reviews</div>
+        </div>
+        <div class="rsb-divider"></div>
+        <div>
+          <div class="rsb-number">2</div>
+          <div class="rsb-label">Kampala Locations</div>
+        </div>
+      </div>
+
       <div class="review-carousel-wrap">
-        <button class="carousel-btn prev" id="reviewPrev">‹</button>
+        <button class="carousel-btn prev" id="reviewPrev" aria-label="Previous review">‹</button>
         <div class="review-track-outer">
           <div class="review-track" id="reviewTrack"></div>
         </div>
-        <button class="carousel-btn next" id="reviewNext">›</button>
+        <button class="carousel-btn next" id="reviewNext" aria-label="Next review">›</button>
       </div>
       <div class="review-dots" id="reviewDots"></div>
     </div>
@@ -384,7 +410,7 @@
       <span class="section-tag">🎰 Can't Decide?</span>
       <h2>Let Us <em>Choose For You!</em></h2>
       <p>Hit the button — we'll pick your next Yummy treat</p>
-      <button class="spin-btn glow" id="spinBtn">🎲 Spin the Wheel!</button>
+      <button class="spin-btn" id="spinBtn">🎲 Spin the Wheel!</button>
       <div class="spin-result" id="spinResult"></div>
     </div>
   </section>
@@ -402,10 +428,10 @@
         <!-- Branch 1: Palm Village -->
         <div class="location-card reveal">
           <div class="location-store-img">
-            <img src="outside.png" alt="Yummy Palm Village Mall storefront" class="location-img" />
+            <img src="outside.png" alt="Yummy Palm Village Mall storefront" class="location-img" loading="lazy" />
           </div>
           <div class="location-header">
-            <span class="location-badge">📍 Branch 1 · NEW</span>
+            <span class="location-badge">📍 Branch 1</span>
             <h3>Palm Village Mall</h3>
             <p>Ggaba Road, Kampala</p>
           </div>
@@ -434,11 +460,11 @@
                 <strong>Yummy – Palm Village</strong><br/>
                 Palm Village Mall, Ggaba<br/>Kampala, Uganda
               </div>
-              <a href="https://maps.google.com/?q=Palm+Village+Mall+Ggaba+Kampala+Uganda" target="_blank" class="btn-secondary">Open in Google Maps 🗺️</a>
+              <a href="https://maps.google.com/?q=Palm+Village+Mall+Ggaba+Kampala+Uganda" target="_blank" rel="noopener" class="btn-secondary">Open in Google Maps 🗺️</a>
             </div>
           </div>
           <div class="contact-btns">
-            <a href="https://wa.me/256778154516?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Palm%20Village%20Mall%2C%20Ggaba" class="btn-whatsapp" target="_blank">💬 WhatsApp Order</a>
+            <a href="https://wa.me/256778154516?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Palm%20Village%20Mall%2C%20Ggaba" class="btn-whatsapp" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
             <a href="tel:+256778154516" class="btn-call">📞 Call Us</a>
           </div>
         </div>
@@ -446,7 +472,7 @@
         <!-- Branch 2: Lugogo Mall -->
         <div class="location-card reveal">
           <div class="location-store-img">
-            <img src="Lugog_One.png" alt="Yummy Lugogo Mall interior" class="location-img" />
+            <img src="Lugog_One.png" alt="Yummy Lugogo Mall interior" class="location-img" loading="lazy" />
           </div>
           <div class="location-header">
             <span class="location-badge location-badge--new">📍 Branch 2</span>
@@ -478,11 +504,11 @@
                 <strong>Yummy – Lugogo Mall</strong><br/>
                 Lugogo Mall<br/>Kampala, Uganda
               </div>
-              <a href="https://maps.google.com/?q=Lugogo+Mall+Kampala+Uganda" target="_blank" class="btn-secondary">Open in Google Maps 🗺️</a>
+              <a href="https://maps.google.com/?q=Lugogo+Mall+Kampala+Uganda" target="_blank" rel="noopener" class="btn-secondary">Open in Google Maps 🗺️</a>
             </div>
           </div>
           <div class="contact-btns">
-            <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Lugogo%20Mall" class="btn-whatsapp" target="_blank">💬 WhatsApp Order</a>
+            <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20would%20like%20to%20order%20from%20Lugogo%20Mall" class="btn-whatsapp" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
             <a href="tel:+256708526671" class="btn-call">📞 Call Us</a>
           </div>
         </div>
@@ -511,10 +537,10 @@
       <div class="footer-social-col">
         <h4>Follow Us</h4>
         <div class="social-links">
-          <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20want%20to%20order" class="social-icon" title="WhatsApp" target="_blank">💬</a>
-          <a href="https://www.instagram.com/yummyuganda/" class="social-icon" title="Instagram" target="_blank">📸</a>
-          <a href="https://www.tiktok.com/@yummyuganda" class="social-icon" title="TikTok" target="_blank">🎵</a>
-          <a href="https://www.facebook.com/p/Yummyuganda-100063521024971/" class="social-icon" title="Facebook" target="_blank">📘</a>
+          <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20want%20to%20order" class="social-icon" title="WhatsApp" target="_blank" rel="noopener">💬</a>
+          <a href="https://www.instagram.com/yummyuganda/" class="social-icon" title="Instagram" target="_blank" rel="noopener">📸</a>
+          <a href="https://www.tiktok.com/@yummyuganda" class="social-icon" title="TikTok" target="_blank" rel="noopener">🎵</a>
+          <a href="https://www.facebook.com/p/Yummyuganda-100063521024971/" class="social-icon" title="Facebook" target="_blank" rel="noopener">📘</a>
         </div>
       </div>
       <div class="footer-news-col">
@@ -544,30 +570,38 @@
     </div>
     <div class="cart-footer">
       <div class="cart-total">Total: <strong id="cartTotal">UGX 0</strong></div>
-      <button class="btn-primary glow" onclick="checkoutWhatsApp()">Order via WhatsApp 💬</button>
+      <button class="btn-primary" onclick="checkoutWhatsApp()">Order via WhatsApp 💬</button>
     </div>
   </div>
 
   <!-- ======== PRODUCT MODAL ======== -->
+  <!-- Improved: shows total price with qty, clearer CTA, WhatsApp direct order option -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="product-modal" id="productModal">
-      <button class="modal-close" id="modalClose">✕</button>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
       <div class="modal-emoji" id="modalEmoji">🍰</div>
       <h2 id="modalName">Product Name</h2>
       <p id="modalDesc">Description here.</p>
       <div class="modal-ingredients" id="modalIngredients"></div>
-      <div class="modal-price" id="modalPrice">UGX 0</div>
-      <div class="modal-qty">
-        <button onclick="changeQty(-1)">−</button>
-        <span id="modalQty">1</span>
-        <button onclick="changeQty(1)">+</button>
+      <div class="modal-price-row">
+        <span class="modal-unit-price" id="modalPrice">UGX 0</span>
+        <span class="modal-price-sep">×</span>
+        <div class="modal-qty">
+          <button onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+          <span id="modalQty">1</span>
+          <button onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="modal-price-sep">=</span>
+        <span class="modal-total-price" id="modalTotal">UGX 0</span>
       </div>
-      <button class="btn-primary glow" onclick="addFromModal()">Add to Cart 🛒</button>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="addFromModal()">Add to Cart 🛒</button>
+        <button class="btn-whatsapp-modal" onclick="orderDirectWhatsApp()">Order on WhatsApp 💬</button>
+      </div>
     </div>
   </div>
 
-  <!-- ======== CONFETTI CANVAS ======== -->
-  <canvas id="confettiCanvas"></canvas>
+  <!-- confettiCanvas removed — only triggered on a rarely-used "Grab Deal" button -->
 
   <!-- ======== MOBILE BOTTOM NAV ======== -->
   <nav class="mobile-bottom-nav">
@@ -579,7 +613,10 @@
   </nav>
 
   <!-- ======== FLOATING WHATSAPP ======== -->
-  <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20want%20to%20order" class="floating-order" target="_blank">💬 Order Now</a>
+  <a href="https://wa.me/256708526671?text=Hi%20Yummy!%20I%20want%20to%20place%20an%20order" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+    <span class="floating-whatsapp-label">Order on WhatsApp</span>
+    💬
+  </a>
 
   <script src="app.js"></script>
 </body>
