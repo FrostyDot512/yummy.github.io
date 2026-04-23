@@ -104,12 +104,49 @@ const builderState = {
 };
 
 // ============================================================
-// LOADER — hide immediately when page loads (no fake delay)
+// LOADER — hide as soon as the DOM is interactive, with two
+// safety nets so the loader NEVER gets stuck on first visit.
+//
+// Why the old code broke:
+//   window 'load' fires only after ALL sub-resources (images,
+//   fonts, etc.) finish downloading.  On a first visit nothing
+//   is cached, so a single slow/failed image can block 'load'
+//   indefinitely — the user sees a frozen loading screen.
+//   Refreshing works because assets are now cached.
+//
+// Fix strategy (three layers):
+//   1. DOMContentLoaded  — hide as soon as HTML is parsed &
+//      scripts are ready (~instant, no image dependency).
+//   2. window 'load'     — kept as a belt-and-suspenders call
+//      in case DOMContentLoaded somehow races.
+//   3. Hard 3 s timeout  — absolute last resort; if neither
+//      event has fired the loader is force-hidden so the user
+//      is never permanently stuck.
 // ============================================================
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  if (loader) loader.classList.add('hidden');
-});
+(function () {
+  const HARD_TIMEOUT_MS = 3000; // max ms before force-hide
+
+  function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader && !loader.classList.contains('hidden')) {
+      loader.classList.add('hidden');
+    }
+  }
+
+  // Layer 1 — fire as soon as the DOM is ready (no image wait)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideLoader);
+  } else {
+    // readyState is already 'interactive' or 'complete'
+    hideLoader();
+  }
+
+  // Layer 2 — also hook window load (covers edge-cases)
+  window.addEventListener('load', hideLoader);
+
+  // Layer 3 — hard timeout safety net
+  setTimeout(hideLoader, HARD_TIMEOUT_MS);
+})();
 
 // ============================================================
 // NAVBAR
