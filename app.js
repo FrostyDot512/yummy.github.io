@@ -84,7 +84,10 @@ const spinOptions = [
 // ============================================================
 // GLOBAL STATE
 // ============================================================
-let cart = JSON.parse(localStorage.getItem('yummy_cart') || '[]');
+// Cart uses sessionStorage so it resets automatically when the browser is closed.
+// Favorites and saved cake still persist in localStorage.
+let cart = [];
+try { cart = JSON.parse(sessionStorage.getItem('yummy_cart') || '[]'); } catch(_) { cart = []; }
 let favorites = JSON.parse(localStorage.getItem('yummy_favorites') || '[]');
 let savedCake = JSON.parse(localStorage.getItem('yummy_cake') || 'null');
 let currentModal = null;
@@ -344,14 +347,16 @@ function addToCart(item, qty = 1) {
 }
 
 function removeFromCart(id) {
-  cart = cart.filter(c => c.id !== id);
+  const numId = Number(id);
+  cart = cart.filter(c => Number(c.id) !== numId);
   saveCart();
   renderCart();
   updateCartCount();
 }
 
 function changeCartQty(id, delta) {
-  const item = cart.find(c => c.id === id);
+  const numId = Number(id);
+  const item = cart.find(c => Number(c.id) === numId);
   if (!item) return;
   item.qty = Math.max(1, item.qty + delta);
   saveCart();
@@ -359,7 +364,9 @@ function changeCartQty(id, delta) {
   updateCartCount();
 }
 
-function saveCart() { localStorage.setItem('yummy_cart', JSON.stringify(cart)); }
+function saveCart() {
+  try { sessionStorage.setItem('yummy_cart', JSON.stringify(cart)); } catch(_) {}
+}
 
 function updateCartCount() {
   const total = cart.reduce((sum, c) => sum + c.qty, 0);
@@ -374,17 +381,17 @@ function renderCart() {
     return;
   }
   container.innerHTML = cart.map(item => `
-    <div class="cart-item">
+    <div class="cart-item" data-id="${item.id}">
       <div class="ci-emoji">${item.emoji}</div>
       <div class="ci-info">
         <div class="ci-name">${item.name}</div>
         <div class="ci-price">UGX ${(item.price * item.qty).toLocaleString()}</div>
       </div>
       <div class="ci-controls">
-        <button onclick="changeCartQty(${item.id},-1)" aria-label="Remove one">−</button>
+        <button class="ci-dec" data-id="${item.id}" aria-label="Remove one">−</button>
         <span class="ci-qty">${item.qty}</span>
-        <button onclick="changeCartQty(${item.id},1)" aria-label="Add one">+</button>
-        <button onclick="removeFromCart(${item.id})" style="color:#e53935;" aria-label="Remove item">✕</button>
+        <button class="ci-inc" data-id="${item.id}" aria-label="Add one">+</button>
+        <button class="ci-del" data-id="${item.id}" style="color:#e53935;" aria-label="Remove item">✕</button>
       </div>
     </div>
   `).join('');
@@ -392,7 +399,17 @@ function renderCart() {
   document.getElementById('cartTotal').textContent = `UGX ${total.toLocaleString()}`;
 }
 
-// Improved WhatsApp checkout message: one item per line, clear total, pickup request
+// Event delegation for cart buttons — avoids stale inline onclick issues
+document.getElementById('cartItems').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-id]');
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  if (btn.classList.contains('ci-dec'))  changeCartQty(id, -1);
+  else if (btn.classList.contains('ci-inc')) changeCartQty(id, 1);
+  else if (btn.classList.contains('ci-del')) removeFromCart(id);
+});
+
+// Improved WhatsApp checkout message
 function checkoutWhatsApp() {
   if (cart.length === 0) return;
   const lines = cart
@@ -750,22 +767,6 @@ document.getElementById('hoursBtn2').addEventListener('click', () => {
   drop.classList.toggle('open');
   btn.textContent = drop.classList.contains('open') ? 'Close Hours ▲' : 'View Hours ▼';
 });
-
-// ============================================================
-// NEWSLETTER
-// ============================================================
-function subscribeNewsletter() {
-  const input = document.getElementById('newsletterEmail');
-  const msg = document.getElementById('newsMsg');
-  if (!input.value || !input.value.includes('@')) {
-    input.style.borderColor = '#e53935';
-    setTimeout(() => input.style.borderColor = '', 2000);
-    return;
-  }
-  msg.style.display = 'block';
-  input.value = '';
-  setTimeout(() => msg.style.display = 'none', 5000);
-}
 
 // ============================================================
 // SMOOTH SCROLL
